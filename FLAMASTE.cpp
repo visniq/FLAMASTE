@@ -2,19 +2,31 @@
 #include <iostream>
 #include <string>
 
-void CheckingIfThereIsMoreThanTwoSameCharsNextToEachOthers(std::string x)
+
+//need more changes
+
+void CheckingIfThereIsMoreThanTwoSameCharsNextToEachOther(std::string x)
 {
-    for (int i = 0; i < x.length()-1; i++)
+    int i;
+    int numOfSameLetters{ 1 };
+    int j{0};
+    char firstLetter;
+    for (i = 0; i < x.length()-1; i++)
     {
-        int j = 1;
         j++;
         if (x[i] == x[j])
         {
-            int numOfSameLetters =+ 1;
+            firstLetter = x[i];
+            numOfSameLetters += 1;
         }
-        else
-            return false;
     }
+
+    if (numOfSameLetters > 2)
+    {
+        std::cout << firstLetter << numOfSameLetters;
+    }
+    else
+        std::cout << x[i];
 }
 
 
@@ -27,7 +39,7 @@ int main()
     while (CountOfTries)
     {
         std::cin >> text;
-        CheckingIfThereIsMoreThanTwoSameCharsNextToEachOthers(text);
+        CheckingIfThereIsMoreThanTwoSameCharsNextToEachOther(text);
         CountOfTries--;
     }
 
