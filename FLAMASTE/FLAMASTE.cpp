@@ -1,33 +1,36 @@
 
 #include <iostream>
 #include <string>
+#include <map>
+#include <cctype>
 
-
-//need more changes
-
-void CheckingIfThereIsMoreThanTwoSameCharsNextToEachOther(std::string x)
+void countSameLetters(std::string& str)
 {
-    int i;
-    int numOfSameLetters{ 1 };
-    int j{ 0 };
-    char firstLetter;
-    for (i = 0; i < x.length() - 1; i++)
+    std::map<char, int> letterCount; // container that store single char and the number of it's occurance
+    for (char c : str)
     {
-        j++;
-        if (x[i] == x[j])
+        if (std::isalpha(c))
         {
-            firstLetter = x[i];
-            numOfSameLetters += 1;
+        letterCount[c]++;
         }
     }
 
-    if (numOfSameLetters > 2)
+    for (const auto& pair : letterCount)
     {
-        std::cout << firstLetter << numOfSameLetters;
+        if(pair.second > 2)
+            std::cout << pair.first << pair.second;
+        else
+        {
+            for (int i = 0; i < pair.second; i++)
+            {
+                std::cout << pair.first;
+            }
+
+        }
     }
-    else
-        std::cout << x[i];
+    std::cout << std::endl;
 }
+
 
 
 int main()
@@ -39,7 +42,7 @@ int main()
     while (CountOfTries)
     {
         std::cin >> text;
-        CheckingIfThereIsMoreThanTwoSameCharsNextToEachOther(text);
+        countSameLetters(text);
         CountOfTries--;
     }
 
