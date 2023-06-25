@@ -1,34 +1,18 @@
 
 #include <iostream>
 #include <string>
-#include <map>
-#include <cctype>
+#include <algorithm>
 
-void countSameLetters(std::string& str)
+void countSameLetters(const std::string& str)
 {
-    std::map<char, int> letterCount; // container that store single char and the number of it's occurance
-    for (char c : str)
+    int count{ 0 };
+    for (size_t i{ 0 }; i < str.length() - 1; i++)
     {
-        if (std::isalpha(c))
-        {
-        letterCount[c]++;
-        }
-    }
+        count = std::count(str.begin(), str.end(), str[i]);
+        
 
-    for (const auto& pair : letterCount)
-    {
-        if(pair.second > 2)
-            std::cout << pair.first << pair.second;
-        else
-        {
-            for (int i = 0; i < pair.second; i++)
-            {
-                std::cout << pair.first;
-            }
-
-        }
     }
-    std::cout << std::endl;
+    
 }
 
 
